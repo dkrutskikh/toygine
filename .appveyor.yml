@@ -1,0 +1,35 @@
+os:
+  - Visual Studio 2017
+
+version: 0.0.0.{build}
+
+init:
+  - git config --global core.autocrlf input
+  # Set build version to git commit-hash
+  - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
+
+environment:
+  matrix:
+  - VS_VERSION: 15 2017
+    VS_PLATFORM: win32
+  - VS_VERSION: 15 2017 Win64
+    VS_PLATFORM: x64
+
+configuration:
+- RelWithDebInfo
+- Release
+
+# scripts to run before build
+before_build:
+  - git submodule update --init --recursive
+  - cmd: echo Running cmake...
+  - cmd: md garbage
+  - cmd: cd garbage
+  - cmd: if %VS_PLATFORM%==win32 (cmake.exe -G "Visual Studio %VS_VERSION%" -T "v141_xp" "..") else (cmake.exe -G "Visual Studio %VS_VERSION%" "..")
+
+build:
+  project: garbage/ToyGine.sln
+
+test_script:
+  - cmd: if %CONFIGURATION%==RelWithDebInfo (test\unittest\%CONFIGURATION%\unittest --reporter junit > junit.xml) else (echo "tests run only in debug mode")
+  - ps: if ($env:CONFIGURATION -eq "RelWithDebInfo") { $wc = New-Object 'System.Net.WebClient'; $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\junit.xml)); }
