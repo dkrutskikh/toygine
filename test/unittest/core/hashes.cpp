@@ -2,25 +2,31 @@
 #include "../../../src/core/hashes.h"
 using namespace toygine;
 
-
 TEST_CASE("Hashes tests", "[HashesTests]") {
-
-  static const char *sc_hashString = "ToyGine2 - Free 2D/3D game engine.";
+  static const std::string sc_hashString = "ToyGine2 - Free 2D/3D game engine.";
 
   SECTION("crc8") {
-    REQUIRE(crc8(reinterpret_cast< const byte * >(sc_hashString), strlen(sc_hashString)) == 0x6A);
+    REQUIRE(crc8(reinterpret_cast<const byte *>(sc_hashString.c_str()),
+                 sc_hashString.length()) == 0x6A);
   }
   SECTION("crc16") {
-    REQUIRE(crc16(reinterpret_cast< const byte * >(sc_hashString), strlen(sc_hashString)) == 0x7568);
+    REQUIRE(crc16(reinterpret_cast<const byte *>(sc_hashString.c_str()),
+                  sc_hashString.length()) == 0x7568);
   }
   SECTION("crc32") {
-    REQUIRE(crc32(reinterpret_cast< const byte * >(sc_hashString), strlen(sc_hashString)) == 0xF003D128);
+    REQUIRE(crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()),
+                  sc_hashString.length()) == 0xF003D128);
 
-    const size_t firstSize = static_cast< size_t >(rand() % strlen(sc_hashString));
+    const size_t firstSize =
+        static_cast<size_t>(rand() % sc_hashString.length());
 
-    uint32 testCrc = crc32(reinterpret_cast< const byte * >(sc_hashString), firstSize);
-    testCrc = crc32(reinterpret_cast< const byte * >(sc_hashString) + firstSize, strlen(sc_hashString) - firstSize, testCrc);
+    uint32 testCrc =
+        crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);
+    testCrc =
+        crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()) + firstSize,
+              sc_hashString.length() - firstSize, testCrc);
 
-    REQUIRE(crc32(reinterpret_cast< const byte * >(sc_hashString), strlen(sc_hashString)) == testCrc);
+    REQUIRE(crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()),
+                  sc_hashString.length()) == testCrc);
   }
 }
