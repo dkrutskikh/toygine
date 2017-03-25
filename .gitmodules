@@ -1,3 +1,6 @@
 [submodule "ext/catch"]
 	path = ext/catch
 	url = https://github.com/philsquared/Catch.git
+[submodule "ext/googlestyleguide"]
+	path = ext/googlestyleguide
+	url = https://github.com/google/styleguide.git
