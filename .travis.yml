@@ -1,0 +1,27 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      env: COMPILER="gcc5" BUILD_TYPE="Debug"
+
+before_install:
+  - if [ "$COMPILER" == "gcc5" ]; then
+      sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
+      sudo apt-get update -q;
+      sudo apt-get install gcc-5 g++-5 -y;
+      sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50;
+      sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50;
+    fi
+  - sudo pip install cpp-coveralls
+
+script:
+  - mkdir -pv garbage
+  - cd garbage
+  - cmake -G "Unix Makefiles" -D "CMAKE_BUILD_TYPE":STRING="$BUILD_TYPE" ".."
+  - if [ "$COMPILER" == "gcc5" ]; then
+      make unittest;
+      test/unittest/unittest;
+    fi
