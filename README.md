@@ -1,4 +1,5 @@
-# ToyEngine # 
+# ToyGine # 
+Multi-platform 2D / 3D game engine
 
 ## Build status
 [![Build Status](https://travis-ci.org/DmitryKrutskikh/toygine.svg?branch=master)](https://travis-ci.org/DmitryKrutskikh/toygine)
