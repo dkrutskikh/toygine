@@ -1,5 +1,5 @@
 ﻿#include "../../../ext/catch/single_include/catch.hpp"
-#include "../../../src/core/hashes.h"
+#include "../../../src/core/hashes.hpp"
 using namespace toygine;
 
 TEST_CASE("Hashes tests", "[HashesTests]") {

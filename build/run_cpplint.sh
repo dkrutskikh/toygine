@@ -4,7 +4,7 @@ CHECK_DIRS="./include ./samples ./src ./tests ./tools"
 
 #--------------
 
-CPPLINT_FILES=`find $CHECK_DIRS -name "*.cpp" -o -name "*.h" -o -name "*.inl" -o -name "*.c"`
+CPPLINT_FILES=`find $CHECK_DIRS -name "*.cpp" -o -name "*.hpp" -o -name "*.inl" -o -name "*.c" -o -name "*.h"`
 echo $CPPLINT_FILES | xargs python ext/googlestyleguide/cpplint/cpplint.py 2>&1
 
 #--------------

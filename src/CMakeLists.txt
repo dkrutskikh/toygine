@@ -3,19 +3,19 @@ if(WIN32 AND MSVC)
 endif()
 
 if(BACKEND STREQUAL "Windows Desktop")
-  set(BACKEND_CONFIG_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/backends/windows/backend_config.h)
+  set(BACKEND_CONFIG_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/backends/windows/backend_config.hpp)
 elseif(BACKEND STREQUAL "Linux Desktop")
-  set(BACKEND_CONFIG_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/backends/linux/backend_config.h)
+  set(BACKEND_CONFIG_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/backends/linux/backend_config.hpp)
 elseif(BACKEND STREQUAL "OSX Desktop")
-  set(BACKEND_CONFIG_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/backends/osx/backend_config.h)
+  set(BACKEND_CONFIG_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/backends/osx/backend_config.hpp)
 endif()
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/core/core.h.in ${CMAKE_CURRENT_SOURCE_DIR}/../include/core.h @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/core/core.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/../include/core.hpp @ONLY)
 
 #
 # Stuff the average programmer needs to change #
 set(SRC_CORE_LIST core/hashes.cpp)
-set(HDR_CORE_LIST core/hashes.h   ../include/core.h)
+set(HDR_CORE_LIST core/hashes.hpp ../include/core.hpp)
 
 source_group("Core" FILES ${SRC_CORE_LIST} ${HDR_CORE_LIST})
 
