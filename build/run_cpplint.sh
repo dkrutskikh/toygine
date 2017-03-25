@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CHECK_DIRS="./include ./samples ./src ./tests ./tools"
+CHECK_DIRS="./include ./src ./test"
 
 #--------------
 
