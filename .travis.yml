@@ -12,10 +12,11 @@ before_install:
       sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
       sudo apt-get update -q;
       sudo apt-get install gcc-5 g++-5 -y;
+      sudo pip install codecov;
       sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50;
       sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50;
+      sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90;
     fi
-  - sudo pip install cpp-coveralls
 
 script:
   - mkdir -pv garbage
@@ -24,4 +25,11 @@ script:
   - if [ "$COMPILER" == "gcc5" ]; then
       make unittest;
       test/unittest/unittest;
+      for filename in `find ../src | egrep '\.cpp'`; do gcov-5 -n -o . $filename > /dev/null; done;
+      codecov;
+    fi
+
+after_success:
+  - if [ "$COMPILER" == "gcc5" ]; then
+      bash <(curl -s https://codecov.io/bash)
     fi
