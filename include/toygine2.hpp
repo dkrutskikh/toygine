@@ -19,5 +19,14 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
-#define CATCH_CONFIG_MAIN
-#include "../../ext/catch/single_include/catch.hpp"
+/*
+  \file   toygine2.h
+  \brief  united engine header
+*/
+
+#ifndef INCLUDE_TOYGINE2_H_
+#define INCLUDE_TOYGINE2_H_
+
+#include "core.h"
+
+#endif  // INCLUDE_TOYGINE2_H_

@@ -19,5 +19,37 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
-#define CATCH_CONFIG_MAIN
-#include "../../ext/catch/single_include/catch.hpp"
+/*!
+  \file   backend_config.hpp
+  \brief  additional backend header
+*/
+
+#ifndef SRC_BACKENDS_WINDOWS_BACKEND_CONFIG_HPP_
+#define SRC_BACKENDS_WINDOWS_BACKEND_CONFIG_HPP_
+
+//------------------------------------------------------------------------------
+
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif  // NOMINMAX
+#include <windows.h>
+
+#if defined(_MSC_VER)
+
+#define TARGET_OS OS_WINDOWS_MSVC
+
+#if defined(_M_IX86)
+#define TARGET_CPU CPU_INTEL_x86
+#elif defined(_M_X64)
+#define TARGET_CPU CPU_INTEL_x64
+#endif
+
+#endif
+
+//------------------------------------------------------------------------------
+
+#include "../coreconfig_cpp11_msvc.hpp"
+
+//------------------------------------------------------------------------------
+
+#endif  // SRC_BACKENDS_WINDOWS_BACKEND_CONFIG_HPP_

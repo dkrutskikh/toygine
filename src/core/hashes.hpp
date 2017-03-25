@@ -19,5 +19,22 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
-#define CATCH_CONFIG_MAIN
-#include "../../ext/catch/single_include/catch.hpp"
+/*
+  \file   hashes.hpp
+  \brief  hash functions
+*/
+
+#ifndef SRC_CORE_HASHES_HPP_
+#define SRC_CORE_HASHES_HPP_
+
+#include "../../include/core.hpp"
+
+namespace toygine {
+
+uint8 crc8(const byte *data, size_t size, uint8 crc = 0);
+uint16 crc16(const byte *data, size_t size, uint16 crc = 0);
+uint32 crc32(const byte *data, size_t size, uint32 crc = 0);
+
+}  // namespace toygine
+
+#endif  // SRC_CORE_HASHES_HPP_

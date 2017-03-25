@@ -19,7 +19,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
-#include "hashes.h"
+#include "hashes.hpp"
 #include <cassert>
 
 static const uint8 sc_crcTable8bit[256] = {

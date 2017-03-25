@@ -1,6 +1,31 @@
-﻿#include "../../../ext/catch/single_include/catch.hpp"
-#include "../../../src/core/hashes.h"
-using namespace toygine;
+//
+// Copyright (c) 2017 Dmitry Krutskikh
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+// IN THE SOFTWARE.
+//
+#include <cstdlib>
+#include <string>
+#include "../../../ext/catch/single_include/catch.hpp"
+#include "../../../src/core/hashes.hpp"
+using toygine::crc8;
+using toygine::crc16;
+using toygine::crc32;
 
 TEST_CASE("Hashes tests", "[HashesTests]") {
   static const std::string sc_hashString = "ToyGine2 - Free 2D/3D game engine.";
@@ -18,7 +43,7 @@ TEST_CASE("Hashes tests", "[HashesTests]") {
                   sc_hashString.length()) == 0xF003D128);
 
     const size_t firstSize =
-        static_cast<size_t>(rand() % sc_hashString.length());
+        static_cast<size_t>(std::rand() % sc_hashString.length());
 
     uint32 testCrc =
         crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);

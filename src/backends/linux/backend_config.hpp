@@ -19,5 +19,32 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
-#define CATCH_CONFIG_MAIN
-#include "../../ext/catch/single_include/catch.hpp"
+/*!
+  \file   backend_config.hpp
+  \brief  additional backend header
+*/
+
+#ifndef SRC_BACKENDS_LINUX_BACKEND_CONFIG_HPP_
+#define SRC_BACKENDS_LINUX_BACKEND_CONFIG_HPP_
+
+//------------------------------------------------------------------------------
+
+#define TARGET_OS OS_LINUX
+
+#if defined(__x86_64__)
+#define TARGET_CPU CPU_INTEL_x64
+#else
+#define TARGET_CPU CPU_INTEL_x86
+#endif
+
+//------------------------------------------------------------------------------
+
+#if defined(__llvm__) && (__clang__)
+#include "../coreconfig_cpp11_clang.hpp"
+#else
+#include "../coreconfig_cpp11_gcc.hpp"
+#endif
+
+//------------------------------------------------------------------------------
+
+#endif  // SRC_BACKENDS_LINUX_BACKEND_CONFIG_HPP_
