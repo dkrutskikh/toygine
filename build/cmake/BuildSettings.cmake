@@ -74,13 +74,15 @@ elseif(UNIX AND NOT APPLE)
   set(CMAKE_C_FLAGS   "-Wall -Werror -Wextra -Wpedantic -std=c11")
   set(CMAKE_CXX_FLAGS "-Wall -Werror -Wextra -Wpedantic -std=c++14")
 
-  set(CMAKE_C_FLAGS_DEBUG "-g -D_DEBUG")
+  set(CMAKE_C_FLAGS_DEBUG "-g -D_DEBUG -fprofile-arcs -ftest-coverage")
   set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -O3 -D_DEBUG -flto")
   set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -flto")
 
-  set(CMAKE_CXX_FLAGS_DEBUG "-g -D_DEBUG")
+  set(CMAKE_CXX_FLAGS_DEBUG "-g -D_DEBUG -fprofile-arcs -ftest-coverage")
   set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g -O3 -D_DEBUG -flto")
   set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -flto")
+
+  set(CMAKE_EXE_LINKER_FLAGS_DEBUG "-lgcov")
 
 elseif(APPLE)
 
