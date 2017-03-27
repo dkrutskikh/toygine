@@ -57,14 +57,6 @@
 #undef TARGET_OS
 #undef TARGET_CPU
 
-#undef uint8
-#undef int8
-#undef uint16
-#undef int16
-#undef uint32
-#undef int32
-#undef uint64
-#undef int64
 #undef byte
 
 #include "@BACKEND_CONFIG_HEADER@"
