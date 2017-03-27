@@ -19,10 +19,10 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
+#include "../../../src/core/hashes.hpp"
 #include <cstdlib>
 #include <string>
 #include "../../../ext/catch/single_include/catch.hpp"
-#include "../../../src/core/hashes.hpp"
 using toygine::crc8;
 using toygine::crc16;
 using toygine::crc32;
@@ -45,7 +45,7 @@ TEST_CASE("Hashes tests", "[HashesTests]") {
     const size_t firstSize =
         static_cast<size_t>(std::rand() % sc_hashString.length());
 
-    uint32 testCrc =
+    std::uint32_t testCrc =
         crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);
     testCrc =
         crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()) + firstSize,
