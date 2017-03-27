@@ -27,13 +27,14 @@
 #ifndef SRC_CORE_HASHES_HPP_
 #define SRC_CORE_HASHES_HPP_
 
+#include <cstdint>
 #include "../../include/core.hpp"
 
 namespace toygine {
 
-uint8 crc8(const byte *data, size_t size, uint8 crc = 0);
-uint16 crc16(const byte *data, size_t size, uint16 crc = 0);
-uint32 crc32(const byte *data, size_t size, uint32 crc = 0);
+std::uint8_t crc8(const byte *data, size_t size, std::uint8_t crc = 0);
+std::uint16_t crc16(const byte *data, size_t size, std::uint16_t crc = 0);
+std::uint32_t crc32(const byte *data, size_t size, std::uint32_t crc = 0);
 
 }  // namespace toygine
 

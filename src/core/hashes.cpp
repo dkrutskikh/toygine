@@ -22,7 +22,7 @@
 #include "hashes.hpp"
 #include <cassert>
 
-static const uint8 sc_crcTable8bit[256] = {
+static const std::uint8_t sc_crcTable8bit[256] = {
     0x00, 0x31, 0x62, 0x53, 0xC4, 0xF5, 0xA6, 0x97, 0xB9, 0x88, 0xDB, 0xEA,
     0x7D, 0x4C, 0x1F, 0x2E, 0x43, 0x72, 0x21, 0x10, 0x87, 0xB6, 0xE5, 0xD4,
     0xFA, 0xCB, 0x98, 0xA9, 0x3E, 0x0F, 0x5C, 0x6D, 0x86, 0xB7, 0xE4, 0xD5,
@@ -46,7 +46,7 @@ static const uint8 sc_crcTable8bit[256] = {
     0x82, 0xB3, 0xE0, 0xD1, 0x46, 0x77, 0x24, 0x15, 0x3B, 0x0A, 0x59, 0x68,
     0xFF, 0xCE, 0x9D, 0xAC};
 
-static const uint16 sc_crcTable16bit[256] = {
+static const std::uint16_t sc_crcTable16bit[256] = {
     0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50A5, 0x60C6, 0x70E7, 0x8108,
     0x9129, 0xA14A, 0xB16B, 0xC18C, 0xD1AD, 0xE1CE, 0xF1EF, 0x1231, 0x0210,
     0x3273, 0x2252, 0x52B5, 0x4294, 0x72F7, 0x62D6, 0x9339, 0x8318, 0xB37B,
@@ -77,7 +77,7 @@ static const uint16 sc_crcTable16bit[256] = {
     0xDF7C, 0xAF9B, 0xBFBA, 0x8FD9, 0x9FF8, 0x6E17, 0x7E36, 0x4E55, 0x5E74,
     0x2E93, 0x3EB2, 0x0ED1, 0x1EF0};
 
-static const uint32 sc_crcTable32bit[256] = {
+static const std::uint32_t sc_crcTable32bit[256] = {
     0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F,
     0xE963A535, 0x9E6495A3, 0x0EDB8832, 0x79DCB8A4, 0xE0D5E91E, 0x97D2D988,
     0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91, 0x1DB71064, 0x6AB020F2,
@@ -124,7 +124,7 @@ static const uint32 sc_crcTable32bit[256] = {
 
 namespace toygine {
 
-uint8 crc8(const byte *data, size_t size, uint8 crc) {
+std::uint8_t crc8(const byte *data, size_t size, std::uint8_t crc) {
   assert(data != nullptr);
 
   crc = ~crc;
@@ -134,7 +134,7 @@ uint8 crc8(const byte *data, size_t size, uint8 crc) {
   return crc;
 }
 
-uint16 crc16(const byte *data, size_t size, uint16 crc) {
+std::uint16_t crc16(const byte *data, size_t size, std::uint16_t crc) {
   assert(data != nullptr);
 
   crc = ~crc;
@@ -144,7 +144,7 @@ uint16 crc16(const byte *data, size_t size, uint16 crc) {
   return crc;
 }
 
-uint32 crc32(const byte *data, size_t size, uint32 crc) {
+std::uint32_t crc32(const byte *data, size_t size, std::uint32_t crc) {
   assert(data != nullptr);
 
   crc = ~crc;
