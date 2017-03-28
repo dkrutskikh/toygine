@@ -17,10 +17,16 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/core/core.hpp.in ${CMAKE_CURRENT_SOUR
 set(SRC_CORE_LIST core/hashes.cpp)
 set(HDR_CORE_LIST core/hashes.hpp ../include/core.hpp)
 
-source_group("Core" FILES ${SRC_CORE_LIST} ${HDR_CORE_LIST})
+set(SRC_FILESYSTEM_LIST filesystem/filename.cpp)
+set(HDR_FILESYSTEM_LIST filesystem/filename.hpp)
+set(INL_FILESYSTEM_LIST filesystem/filename.inl)
 
-set(SRC_LIST ${SRC_LIST} ${SRC_CORE_LIST})
-set(HDR_LIST ${HDR_LIST} ${HDR_CORE_LIST})
+source_group("Core" FILES ${SRC_CORE_LIST} ${HDR_CORE_LIST})
+source_group("FileSystem" FILES ${SRC_FILESYSTEM_LIST} ${HDR_FILESYSTEM_LIST} ${INL_FILESYSTEM_LIST})
+
+set(SRC_LIST ${SRC_LIST} ${SRC_CORE_LIST} ${SRC_FILESYSTEM_LIST})
+set(HDR_LIST ${HDR_LIST} ${HDR_CORE_LIST} ${HDR_FILESYSTEM_LIST})
+set(INL_LIST ${INL_LIST} ${INL_FILESYSTEM_LIST})
 set(LIB_LIST ${LIB_LIST})
 
 #
