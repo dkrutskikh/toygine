@@ -124,7 +124,7 @@ static const std::uint32_t sc_crcTable32bit[256] = {
 
 namespace toygine {
 
-std::uint8_t crc8(const byte *data, size_t size, std::uint8_t crc) {
+std::uint8_t crc8(const byte *data, std::size_t size, std::uint8_t crc) {
   assert(data != nullptr);
 
   crc = ~crc;
@@ -134,7 +134,7 @@ std::uint8_t crc8(const byte *data, size_t size, std::uint8_t crc) {
   return ~crc;
 }
 
-std::uint16_t crc16(const byte *data, size_t size, std::uint16_t crc) {
+std::uint16_t crc16(const byte *data, std::size_t size, std::uint16_t crc) {
   assert(data != nullptr);
 
   crc = ~crc;
@@ -144,7 +144,7 @@ std::uint16_t crc16(const byte *data, size_t size, std::uint16_t crc) {
   return ~crc;
 }
 
-std::uint32_t crc32(const byte *data, size_t size, std::uint32_t crc) {
+std::uint32_t crc32(const byte *data, std::size_t size, std::uint32_t crc) {
   assert(data != nullptr);
 
   crc = ~crc;

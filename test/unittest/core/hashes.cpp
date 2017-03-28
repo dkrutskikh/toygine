@@ -42,8 +42,8 @@ TEST_CASE("Hashes tests", "[HashesTests]") {
     REQUIRE(crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()),
                   sc_hashString.length()) == 0xF003D128);
 
-    const size_t firstSize =
-        static_cast<size_t>(std::rand() % sc_hashString.length());
+    const std::size_t firstSize =
+        static_cast<std::size_t>(std::rand() % sc_hashString.length());
 
     std::uint32_t testCrc =
         crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);
