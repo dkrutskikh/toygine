@@ -32,11 +32,11 @@ TEST_CASE("Hashes tests", "[HashesTests]") {
 
   SECTION("crc8") {
     REQUIRE(crc8(reinterpret_cast<const byte *>(sc_hashString.c_str()),
-                 sc_hashString.length()) == 0x6A);
+                 sc_hashString.length()) == 0x95);
   }
   SECTION("crc16") {
     REQUIRE(crc16(reinterpret_cast<const byte *>(sc_hashString.c_str()),
-                  sc_hashString.length()) == 0x7568);
+                  sc_hashString.length()) == 0x8A97);
   }
   SECTION("crc32") {
     REQUIRE(crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()),

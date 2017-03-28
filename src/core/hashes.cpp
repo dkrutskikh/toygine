@@ -131,7 +131,7 @@ std::uint8_t crc8(const byte *data, size_t size, std::uint8_t crc) {
 
   while (size--) crc = sc_crcTable8bit[crc ^ *data++];
 
-  return crc;
+  return ~crc;
 }
 
 std::uint16_t crc16(const byte *data, size_t size, std::uint16_t crc) {
@@ -141,7 +141,7 @@ std::uint16_t crc16(const byte *data, size_t size, std::uint16_t crc) {
 
   while (size--) crc = (crc << 8) ^ sc_crcTable16bit[(crc >> 8) ^ *data++];
 
-  return crc;
+  return ~crc;
 }
 
 std::uint32_t crc32(const byte *data, size_t size, std::uint32_t crc) {
