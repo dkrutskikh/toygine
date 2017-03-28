@@ -32,18 +32,42 @@ TEST_CASE("Hashes tests", "[HashesTests]") {
 
   SECTION("crc8") {
     REQUIRE(crc8(reinterpret_cast<const byte *>(sc_hashString.c_str()),
-                 sc_hashString.length()) == 0x6A);
+                 sc_hashString.length()) == 0x95);
+
+    const std::size_t firstSize =
+        static_cast<std::size_t>(std::rand() % sc_hashString.length());
+
+    std::uint8_t testCrc =
+        crc8(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);
+    testCrc =
+        crc8(reinterpret_cast<const byte *>(sc_hashString.c_str()) + firstSize,
+             sc_hashString.length() - firstSize, testCrc);
+
+    REQUIRE(crc8(reinterpret_cast<const byte *>(sc_hashString.c_str()),
+                 sc_hashString.length()) == testCrc);
   }
   SECTION("crc16") {
     REQUIRE(crc16(reinterpret_cast<const byte *>(sc_hashString.c_str()),
-                  sc_hashString.length()) == 0x7568);
+                  sc_hashString.length()) == 0x8A97);
+
+    const std::size_t firstSize =
+        static_cast<std::size_t>(std::rand() % sc_hashString.length());
+
+    std::uint16_t testCrc =
+        crc16(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);
+    testCrc =
+        crc16(reinterpret_cast<const byte *>(sc_hashString.c_str()) + firstSize,
+              sc_hashString.length() - firstSize, testCrc);
+
+    REQUIRE(crc16(reinterpret_cast<const byte *>(sc_hashString.c_str()),
+                  sc_hashString.length()) == testCrc);
   }
   SECTION("crc32") {
     REQUIRE(crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()),
                   sc_hashString.length()) == 0xF003D128);
 
-    const size_t firstSize =
-        static_cast<size_t>(std::rand() % sc_hashString.length());
+    const std::size_t firstSize =
+        static_cast<std::size_t>(std::rand() % sc_hashString.length());
 
     std::uint32_t testCrc =
         crc32(reinterpret_cast<const byte *>(sc_hashString.c_str()), firstSize);
