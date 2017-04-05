@@ -44,9 +44,9 @@
 //------------------------------------------------------------------------------
 
 #if defined(__llvm__) && (__clang__)
-#include "../coreconfig_cpp11_clang.hpp"
+#include "../coreconfig_clang.hpp"
 #else
-#include "../coreconfig_cpp11_gcc.hpp"
+#include "../coreconfig_gcc.hpp"
 #endif
 
 //------------------------------------------------------------------------------
