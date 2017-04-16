@@ -21,9 +21,9 @@ set(SRC_FILESYSTEM_LIST filesystem/filename.cpp)
 set(HDR_FILESYSTEM_LIST filesystem/filename.hpp)
 set(INL_FILESYSTEM_LIST filesystem/filename.inl)
 
-set(SRC_MATHEMATICS_LIST )
-set(HDR_MATHEMATICS_LIST mathematics/point.hpp)
-set(INL_MATHEMATICS_LIST mathematics/point.inl)
+set(SRC_MATHEMATICS_LIST                       mathematics/vector2d.cpp)
+set(HDR_MATHEMATICS_LIST mathematics/point.hpp mathematics/vector2d.hpp)
+set(INL_MATHEMATICS_LIST mathematics/point.inl mathematics/vector2d.inl)
 
 source_group("Core" FILES ${SRC_CORE_LIST} ${HDR_CORE_LIST})
 source_group("FileSystem" FILES ${SRC_FILESYSTEM_LIST} ${HDR_FILESYSTEM_LIST} ${INL_FILESYSTEM_LIST})
