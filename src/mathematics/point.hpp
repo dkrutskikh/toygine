@@ -34,7 +34,7 @@ namespace math {
 
 //! 2D point based on std::int32_t
 class point {
-public:
+ public:
   std::int32_t x;
   std::int32_t y;
 
@@ -69,9 +69,9 @@ inline point operator/(const point &left, int right);
 inline bool operator==(const point &left, const point &right);
 inline bool operator!=(const point &left, const point &right);
 
-} // namespace math
-} // namespace toygine
+}  // namespace math
+}  // namespace toygine
 
 #include "point.inl"
 
-#endif // SRC_MATHEMATICS_POINT_HPP_
+#endif  // SRC_MATHEMATICS_POINT_HPP_

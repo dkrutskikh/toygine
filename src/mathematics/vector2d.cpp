@@ -19,14 +19,21 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 //
-/*
-  \file   toygine2.h
-  \brief  united engine header
-*/
+#include "vector2d.hpp"
 
-#ifndef INCLUDE_TOYGINE2_H_
-#define INCLUDE_TOYGINE2_H_
+namespace toygine {
+namespace math {
 
-#include "core.h"
+void vector2d::rotate(float angle) {
+  const float oldX = x;
+  const float oldY = y;
 
-#endif  // INCLUDE_TOYGINE2_H_
+  float cosA = std::cos(angle);
+  float sinA = std::sin(angle);
+
+  x = (oldX * cosA) - (oldY * sinA);
+  y = (oldY * cosA) + (oldX * sinA);
+}
+
+}  // namespace math
+}  // namespace toygine

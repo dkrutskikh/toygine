@@ -4,7 +4,7 @@ set(FRAMEWORK_LIST       ../../ext/catch/single_include/catch.hpp)
 
 set(CORETESTS            core/hashes.cpp)
 set(FILESYSTEMTESTS      filesystem/filename.cpp)
-set(MATHEMATICSTESTS     mathematics/point.cpp)
+set(MATHEMATICSTESTS     mathematics/point.cpp mathematics/vector2d.cpp)
 set(APPLICATIONTESTS     )
 set(GEOMETRYTESTS        )
 set(ANIMATIONSYSTEMTESTS )

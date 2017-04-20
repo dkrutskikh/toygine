@@ -28,11 +28,13 @@ TEST_CASE("Point tests", "[PointTests]") {
   const point testPoint2({-12, 22});
 
   SECTION("addAssign") {
-    point p1 = testPoint1;
-    point p2 = testPoint2;
+    point p1, p2;
 
+    p1 = testPoint1;
     REQUIRE((p1 + testPoint2).x == -1);
     REQUIRE((p1 + testPoint2).y == 10);
+
+    p2 = testPoint2;
     REQUIRE((p2 + testPoint1).x == -1);
     REQUIRE((p2 + testPoint1).y == 10);
 
@@ -121,10 +123,10 @@ TEST_CASE("Point tests", "[PointTests]") {
     point p1 = testPoint1;
     point p2 = testPoint2;
 
-    REQUIRE(p1.x != 0);
-    REQUIRE(p1.y != 0);
-    REQUIRE(p2.x != 0);
-    REQUIRE(p2.y != 0);
+    REQUIRE_FALSE(p1.x == 0);
+    REQUIRE_FALSE(p1.y == 0);
+    REQUIRE_FALSE(p2.x == 0);
+    REQUIRE_FALSE(p2.y == 0);
 
     p1.setZero();
     p2.setZero();
@@ -160,8 +162,8 @@ TEST_CASE("Point tests", "[PointTests]") {
   SECTION("minus") {
     point p1 = -testPoint1;
 
-    REQUIRE(p1.x != testPoint1.x);
-    REQUIRE(p1.y != testPoint1.y);
+    REQUIRE_FALSE(p1.x == testPoint1.x);
+    REQUIRE_FALSE(p1.y == testPoint1.y);
 
     REQUIRE(-p1.x == testPoint1.x);
     REQUIRE(-p1.y == testPoint1.y);
@@ -173,7 +175,7 @@ TEST_CASE("Point tests", "[PointTests]") {
     REQUIRE(p1 == testPoint1);
     REQUIRE(p2 == testPoint2);
 
-    REQUIRE(testPoint1 != testPoint2);
-    REQUIRE(p1 != p2);
+    REQUIRE_FALSE(testPoint1 == testPoint2);
+    REQUIRE_FALSE(p1 == p2);
   }
 }

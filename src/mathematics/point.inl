@@ -124,7 +124,7 @@ inline bool operator!=(const point &left, const point &right) {
   return !(left == right);
 }
 
-} // namespace math
-} // namespace toygine
+}  // namespace math
+}  // namespace toygine
 
-#endif // SRC_MATHEMATICS_POINT_INL_
+#endif  // SRC_MATHEMATICS_POINT_INL_
