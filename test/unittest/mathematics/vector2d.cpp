@@ -233,8 +233,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v1 == testVector1);
     REQUIRE(v2 == testVector2);
 
-    REQUIRE_FALSE(testVector1 == testVector2);
-    REQUIRE_FALSE(v1 == v2);
+    REQUIRE(testVector1 != testVector2);
+    REQUIRE(v1 != v2);
   }
   SECTION("multiplication") {
     // Scalar multiply

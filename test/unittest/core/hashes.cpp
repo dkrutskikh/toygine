@@ -27,7 +27,7 @@ using toygine::crc8;
 using toygine::crc16;
 using toygine::crc32;
 
-TEST_CASE("Hashes tests", "[HashesTests]") {
+TEST_CASE("Core hashes tests") {
   static const std::string sc_hashString = "ToyGine2 - Free 2D/3D game engine.";
 
   SECTION("crc8") {

@@ -123,18 +123,18 @@ TEST_CASE("Filename tests", "[FilenameTests]") {
 
     fn.setExtension(std::string("ext"));
     fn1.setExtension(std::string("ext1"));
-    fn1_2.setExtension(std::string("ext1_2"));
-    fn2.setExtension(std::string("ext2"));
-    fn2_2.setExtension("ext2_2");
+    fn1_2.setExtension(std::string(".ext1_2"));
+    fn2.setExtension(std::string(".ext2"));
+    fn2_2.setExtension("");
     fn3.setExtension("ext3");
-    fn4.setExtension("ext4");
-    fn5.setExtension("ext5");
+    fn4.setExtension(".ext4");
+    fn5.setExtension(".ext5");
 
     REQUIRE(fn.fullPath().empty());
     REQUIRE(fn1.fullPath() == "S:/path/folder/filename.ext1");
     REQUIRE(fn1_2.fullPath() == "S:/path/folder/filename.ext1_2");
     REQUIRE(fn2.fullPath() == "folder/filename.ext2");
-    REQUIRE(fn2_2.fullPath() == "folder/filename.ext2_2");
+    REQUIRE(fn2_2.fullPath() == "folder/filename");
     REQUIRE(fn3.fullPath() == "filename.ext3");
     REQUIRE(fn4.fullPath() == "path/my.folder/filename.ext4");
     REQUIRE(fn5.fullPath().empty());
