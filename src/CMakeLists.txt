@@ -14,8 +14,8 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/core/core.hpp.in ${CMAKE_CURRENT_SOUR
 
 #
 # Stuff the average programmer needs to change #
-set(SRC_CORE_LIST core/hashes.cpp)
-set(HDR_CORE_LIST core/hashes.hpp ../include/core.hpp)
+set(SRC_CORE_LIST core/hashes.cpp core/utils.cpp)
+set(HDR_CORE_LIST core/hashes.hpp core/utils.hpp ../include/core.hpp)
 
 set(SRC_FILESYSTEM_LIST filesystem/filename.cpp)
 set(HDR_FILESYSTEM_LIST filesystem/filename.hpp)
