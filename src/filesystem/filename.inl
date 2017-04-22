@@ -28,68 +28,68 @@
 namespace toygine {
 namespace filesystem {
 
-inline file_name::file_name() : _fileName() {}
+inline filename::filename() : _fileName() {}
 
-inline file_name::~file_name() {}
+inline filename::~filename() {}
 
-inline file_name::file_name(file_name &&instance)
+inline filename::filename(filename &&instance)
     : _fileName(instance._fileName) {}
 
-inline file_name::file_name(const file_name &instance)
+inline filename::filename(const filename &instance)
     : _fileName(instance._fileName) {}
 
-inline file_name::file_name(std::string &&fileName) : _fileName(fileName) {
+inline filename::filename(std::string &&fileName) : _fileName(fileName) {
   fix();
   optimize();
 }
 
-inline file_name::file_name(const std::string &fileName) : _fileName(fileName) {
+inline filename::filename(const std::string &fileName) : _fileName(fileName) {
   fix();
   optimize();
 }
 
-inline file_name::file_name(const char *fileName) : _fileName(fileName) {
+inline filename::filename(const char *fileName) : _fileName(fileName) {
   fix();
   optimize();
 }
 
-inline bool file_name::empty() const { return _fileName.empty(); }
+inline bool filename::empty() const { return _fileName.empty(); }
 
-inline const std::string &file_name::fullPath() const { return _fileName; }
+inline const std::string &filename::fullPath() const { return _fileName; }
 
-inline std::string file_name::path() const {
+inline std::string filename::path() const {
   return _fileName.substr(0, _fileName.size() - nameExt().length());
 }
 
-inline void file_name::setExtension(const std::string &newExtension) {
+inline void filename::setExtension(const std::string &newExtension) {
   setExtension(newExtension.c_str());
 }
 
-inline file_name &file_name::operator=(file_name &&instance) {
+inline filename &filename::operator=(filename &&instance) {
   std::swap(_fileName, instance._fileName);
   return *this;
 }
 
-inline file_name &file_name::operator=(const file_name &instance) {
+inline filename &filename::operator=(const filename &instance) {
   _fileName = instance._fileName;
   return *this;
 }
 
-inline file_name &file_name::operator=(std::string &&str) {
+inline filename &filename::operator=(std::string &&str) {
   std::swap(_fileName, str);
   fix();
   optimize();
   return *this;
 }
 
-inline file_name &file_name::operator=(const std::string &str) {
+inline filename &filename::operator=(const std::string &str) {
   _fileName = str;
   fix();
   optimize();
   return *this;
 }
 
-inline file_name &file_name::operator=(const char *s) {
+inline filename &filename::operator=(const char *s) {
   assert(s != nullptr);
   _fileName = s;
   fix();
@@ -97,53 +97,53 @@ inline file_name &file_name::operator=(const char *s) {
   return *this;
 }
 
-inline file_name &file_name::operator+=(const file_name &instance) {
+inline filename &filename::operator+=(const filename &instance) {
   return *this += instance.fullPath();
 }
 
-inline file_name &file_name::operator+=(const char *s) {
+inline filename &filename::operator+=(const char *s) {
   assert(s != nullptr);
   return *this += std::string(s);
 }
 
-inline bool operator==(const file_name &lhs, const file_name &rhs) {
+inline bool operator==(const filename &lhs, const filename &rhs) {
   return lhs.fullPath() == rhs.fullPath();
 }
 
-inline bool operator==(const file_name &lhs, const std::string &rhs) {
+inline bool operator==(const filename &lhs, const std::string &rhs) {
   return lhs.fullPath() == rhs;
 }
 
-inline bool operator==(const std::string &lhs, const file_name &rhs) {
+inline bool operator==(const std::string &lhs, const filename &rhs) {
   return rhs == lhs;
 }
 
-inline bool operator==(const file_name &lhs, const char *rhs) {
+inline bool operator==(const filename &lhs, const char *rhs) {
   assert(rhs != nullptr);
   return lhs.fullPath() == rhs;
 }
 
-inline bool operator==(const char *lhs, const file_name &rhs) {
+inline bool operator==(const char *lhs, const filename &rhs) {
   return rhs == lhs;
 }
 
-inline bool operator!=(const file_name &lhs, const file_name &rhs) {
+inline bool operator!=(const filename &lhs, const filename &rhs) {
   return !(lhs == rhs);
 }
 
-inline bool operator!=(const file_name &lhs, const std::string &rhs) {
+inline bool operator!=(const filename &lhs, const std::string &rhs) {
   return !(lhs == rhs);
 }
 
-inline bool operator!=(const std::string &lhs, const file_name &rhs) {
+inline bool operator!=(const std::string &lhs, const filename &rhs) {
   return !(lhs == rhs);
 }
 
-inline bool operator!=(const file_name &lhs, const char *rhs) {
+inline bool operator!=(const filename &lhs, const char *rhs) {
   return !(lhs == rhs);
 }
 
-inline bool operator!=(const char *lhs, const file_name &rhs) {
+inline bool operator!=(const char *lhs, const filename &rhs) {
   return rhs != lhs;
 }
 

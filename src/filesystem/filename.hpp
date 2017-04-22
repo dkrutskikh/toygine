@@ -32,16 +32,16 @@
 namespace toygine {
 namespace filesystem {
 
-class file_name {
+class filename {
  public:
-  inline file_name();
-  inline ~file_name();
+  inline filename();
+  inline ~filename();
 
-  inline file_name(file_name &&instance);
-  inline file_name(const file_name &instance);
-  inline explicit file_name(std::string &&fileName);
-  inline explicit file_name(const std::string &fileName);
-  inline explicit file_name(const char *fileName);
+  inline filename(filename &&instance);
+  inline filename(const filename &instance);
+  inline explicit filename(std::string &&fileName);
+  inline explicit filename(const std::string &fileName);
+  inline explicit filename(const char *fileName);
 
   inline bool empty() const;
 
@@ -54,15 +54,15 @@ class file_name {
   inline void setExtension(const std::string &newExtension);
   void setExtension(char const *newExtension);
 
-  inline file_name &operator=(file_name &&instance);
-  inline file_name &operator=(const file_name &instance);
-  inline file_name &operator=(std::string &&str);
-  inline file_name &operator=(const std::string &str);
-  inline file_name &operator=(char const *s);
+  inline filename &operator=(filename &&instance);
+  inline filename &operator=(const filename &instance);
+  inline filename &operator=(std::string &&str);
+  inline filename &operator=(const std::string &str);
+  inline filename &operator=(char const *s);
 
-  inline file_name &operator+=(const file_name &instance);
-  file_name &operator+=(const std::string &str);
-  inline file_name &operator+=(char const *s);
+  inline filename &operator+=(const filename &instance);
+  filename &operator+=(const std::string &str);
+  inline filename &operator+=(char const *s);
 
   void dirUp();
 
@@ -73,17 +73,17 @@ class file_name {
   std::string _fileName;
 };
 
-inline bool operator==(const file_name &lhs, const file_name &rhs);
-inline bool operator==(const file_name &lhs, const std::string &rhs);
-inline bool operator==(const std::string &lhs, const file_name &rhs);
-inline bool operator==(const file_name &lhs, const char *rhs);
-inline bool operator==(const char *&lhs, const file_name &rhs);
+inline bool operator==(const filename &lhs, const filename &rhs);
+inline bool operator==(const filename &lhs, const std::string &rhs);
+inline bool operator==(const std::string &lhs, const filename &rhs);
+inline bool operator==(const filename &lhs, const char *rhs);
+inline bool operator==(const char *&lhs, const filename &rhs);
 
-inline bool operator!=(const file_name &lhs, const file_name &rhs);
-inline bool operator!=(const file_name &lhs, const std::string &rhs);
-inline bool operator!=(const std::string &lhs, const file_name &rhs);
-inline bool operator!=(const file_name &lhs, const char *rhs);
-inline bool operator!=(const char *&lhs, const file_name &rhs);
+inline bool operator!=(const filename &lhs, const filename &rhs);
+inline bool operator!=(const filename &lhs, const std::string &rhs);
+inline bool operator!=(const std::string &lhs, const filename &rhs);
+inline bool operator!=(const filename &lhs, const char *rhs);
+inline bool operator!=(const char *&lhs, const filename &rhs);
 
 }  // namespace filesystem
 }  // namespace toygine
