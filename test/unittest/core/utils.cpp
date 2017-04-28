@@ -62,6 +62,7 @@ TEST_CASE("Core utils tests") {
 
     REQUIRE(ucs2ToUtf8(nullptr, testArraySize, ucs2Text) == nullptr);
     REQUIRE(ucs2ToUtf8(testUtf8String, 0, ucs2Text) == nullptr);
+    REQUIRE_THAT(ucs2ToUtf8(testUtf8String, 2, ucs2Text), Catch::Equals("H"));
 
     REQUIRE_THAT(ucs2ToUtf8(testUtf8String, testArraySize, nullptr),
                  Catch::Equals(""));
