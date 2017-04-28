@@ -20,6 +20,9 @@ if(BACKEND STREQUAL "Windows Desktop")
   set(SRC_LIST ${SRC_LIST} main_windows.cpp)
 endif()
 
+# TODO: remove
+if(BACKEND STREQUAL "Windows Desktop")
 #
 # Non Builds programmer should not need to change anything beyond this #
-add_gui_application(${APP_NAME} ${SRC_LIST} ${HDR_LIST} ${INL_LIST} ${RES_LIST} ${LIB_LIST} ${MEDIA_PATH} ${OS_DEPENDED_RESOURCES_PATH} ${OS_DEPENDED_BINARY_PATH})
+  add_gui_application(${APP_NAME} ${SRC_LIST} ${HDR_LIST} ${INL_LIST} ${RES_LIST} ${LIB_LIST} ${MEDIA_PATH} ${OS_DEPENDED_RESOURCES_PATH} ${OS_DEPENDED_BINARY_PATH})
+endif()
