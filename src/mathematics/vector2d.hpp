@@ -39,47 +39,48 @@ class vector2d {
   float x;
   float y;
 
-  inline vector2d();
-  inline vector2d(float x, float y);
-  inline vector2d(std::int32_t x, std::int32_t y);
-  explicit inline vector2d(const point &pnt);
-  explicit inline vector2d(const float *floatArray);
+  inline vector2d() noexcept;
+  inline vector2d(float x, float y) noexcept;
+  inline vector2d(std::int32_t x, std::int32_t y) noexcept;
+  explicit inline vector2d(const point &pnt) noexcept;
+  explicit inline vector2d(const float *floatArray) noexcept;
 
-  inline point toPoint() const;
+  inline point toPoint() const noexcept;
 
-  inline vector2d &operator+=(const vector2d &vec);
-  inline vector2d &operator-=(const vector2d &vec);
-  inline vector2d &operator*=(float scalar);
-  inline vector2d &operator/=(float scalar);
+  inline vector2d &operator+=(const vector2d &vec) noexcept;
+  inline vector2d &operator-=(const vector2d &vec) noexcept;
+  inline vector2d &operator*=(float scalar) noexcept;
+  inline vector2d &operator/=(float scalar) noexcept;
 
-  inline float magnitude() const;
-  inline float sqrMagnitude() const;
+  inline float magnitude() const noexcept;
+  inline float sqrMagnitude() const noexcept;
 
-  inline void normalize();
+  inline void normalize() noexcept;
 
-  inline void setZero();
+  inline void setZero() noexcept;
 
-  void rotate(float angle);
+  void rotate(float angle) noexcept;
 
-  inline bool isZero() const;
+  inline bool isZero() const noexcept;
   //! Checks if this vector equals the other one.
   inline bool isEqual(const vector2d &v,
-                      float eps = std::numeric_limits<float>::epsilon()) const;
+                      float eps = std::numeric_limits<float>::epsilon()) const
+      noexcept;
 };
 
-inline vector2d operator-(const vector2d &vec);
+inline vector2d operator-(const vector2d &vec) noexcept;
 
-inline vector2d operator+(const vector2d &left, const vector2d &right);
-inline vector2d operator-(const vector2d &left, const vector2d &right);
-inline vector2d operator*(const vector2d &left, float right);
-inline vector2d operator*(float left, const vector2d &right);
-inline vector2d operator/(const vector2d &left, float right);
+inline vector2d operator+(const vector2d &left, const vector2d &right) noexcept;
+inline vector2d operator-(const vector2d &left, const vector2d &right) noexcept;
+inline vector2d operator*(const vector2d &left, float right) noexcept;
+inline vector2d operator*(float left, const vector2d &right) noexcept;
+inline vector2d operator/(const vector2d &left, float right) noexcept;
 
-inline bool operator==(const vector2d &left, const vector2d &right);
-inline bool operator!=(const vector2d &left, const vector2d &right);
+inline bool operator==(const vector2d &left, const vector2d &right) noexcept;
+inline bool operator!=(const vector2d &left, const vector2d &right) noexcept;
 
-inline float operator*(const vector2d &left, const vector2d &right);
-inline float cross(const vector2d &left, const vector2d &right);
+inline float operator*(const vector2d &left, const vector2d &right) noexcept;
+inline float cross(const vector2d &left, const vector2d &right) noexcept;
 
 }  // namespace math
 }  // namespace toygine

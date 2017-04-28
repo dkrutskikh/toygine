@@ -24,7 +24,7 @@
 namespace toygine {
 namespace math {
 
-void vector2d::rotate(float angle) {
+void vector2d::rotate(float angle) noexcept {
   const float oldX = x;
   const float oldY = y;
 
