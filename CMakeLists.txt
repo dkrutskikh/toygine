@@ -26,6 +26,7 @@ include(BackendsSelecting)
 include(BuildSettings)
 
 add_subdirectory(src)
+add_subdirectory(player)
 
 if(BUILD_TESTS)
   add_subdirectory(test)
