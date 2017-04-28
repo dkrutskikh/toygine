@@ -22,7 +22,7 @@
 #include "../../../src/filesystem/filename.hpp"
 #include <string>
 #include "../../../ext/catch/single_include/catch.hpp"
-using toygine::filesystem::file_name;
+using toygine::filesystem::filename;
 
 TEST_CASE("Filename tests", "[FilenameTests]") {
   static const std::string fn1_s = "S:/path/folder/filename.ext";
@@ -33,14 +33,14 @@ TEST_CASE("Filename tests", "[FilenameTests]") {
   static const std::string fn4_s = "./path/my.folder/filename";
   static const std::string fn5_s = "./";
 
-  const file_name testFN;
-  const file_name testFN1(fn1_s);
-  const file_name testFN1_2(fn1_2_s);
-  const file_name testFN2(fn2_s);
-  const file_name testFN2_2(fn2_2_s);
-  const file_name testFN3(fn3_s);
-  const file_name testFN4(fn4_s);
-  const file_name testFN5(fn5_s);
+  const filename testFN;
+  const filename testFN1(fn1_s);
+  const filename testFN1_2(fn1_2_s);
+  const filename testFN2(fn2_s);
+  const filename testFN2_2(fn2_2_s);
+  const filename testFN3(fn3_s);
+  const filename testFN4(fn4_s);
+  const filename testFN5(fn5_s);
 
   SECTION("empty") {
     REQUIRE(testFN.empty());
@@ -123,18 +123,18 @@ TEST_CASE("Filename tests", "[FilenameTests]") {
 
     fn.setExtension(std::string("ext"));
     fn1.setExtension(std::string("ext1"));
-    fn1_2.setExtension(std::string("ext1_2"));
-    fn2.setExtension(std::string("ext2"));
-    fn2_2.setExtension("ext2_2");
+    fn1_2.setExtension(std::string(".ext1_2"));
+    fn2.setExtension(std::string(".ext2"));
+    fn2_2.setExtension("");
     fn3.setExtension("ext3");
-    fn4.setExtension("ext4");
-    fn5.setExtension("ext5");
+    fn4.setExtension(".ext4");
+    fn5.setExtension(".ext5");
 
     REQUIRE(fn.fullPath().empty());
     REQUIRE(fn1.fullPath() == "S:/path/folder/filename.ext1");
     REQUIRE(fn1_2.fullPath() == "S:/path/folder/filename.ext1_2");
     REQUIRE(fn2.fullPath() == "folder/filename.ext2");
-    REQUIRE(fn2_2.fullPath() == "folder/filename.ext2_2");
+    REQUIRE(fn2_2.fullPath() == "folder/filename");
     REQUIRE(fn3.fullPath() == "filename.ext3");
     REQUIRE(fn4.fullPath() == "path/my.folder/filename.ext4");
     REQUIRE(fn5.fullPath().empty());
@@ -197,11 +197,11 @@ TEST_CASE("Filename tests", "[FilenameTests]") {
     REQUIRE(fn1_2.fullPath() == "S:/");
   }
   SECTION("assign") {
-    file_name fn1;
-    file_name fn1_2;
-    file_name fn2;
-    file_name fn2_2;
-    file_name fn3;
+    filename fn1;
+    filename fn1_2;
+    filename fn2;
+    filename fn2_2;
+    filename fn3;
 
     REQUIRE(fn1.fullPath().empty());
     REQUIRE(fn1_2.fullPath().empty());
@@ -209,7 +209,7 @@ TEST_CASE("Filename tests", "[FilenameTests]") {
     REQUIRE(fn2_2.fullPath().empty());
     REQUIRE(fn3.fullPath().empty());
 
-    fn1 = file_name("S:/path/../path/folder/./filename.ext");
+    fn1 = filename("S:/path/../path/folder/./filename.ext");
     fn1_2 = testFN1_2;
     fn2 = std::string("folder//filename.ext");
     fn2_2 = fn2_2_s;
@@ -222,11 +222,11 @@ TEST_CASE("Filename tests", "[FilenameTests]") {
     REQUIRE(fn3.fullPath() == "filename.ext");
   }
   SECTION("addAssign") {
-    file_name fn1 = file_name(testFN1.path());
-    file_name fn1_2 = file_name(testFN1_2.path());
-    file_name fn2 = file_name(testFN2.path());
-    file_name fn3 = file_name("folder");
-    file_name fn4;
+    filename fn1 = filename(testFN1.path());
+    filename fn1_2 = filename(testFN1_2.path());
+    filename fn2 = filename(testFN2.path());
+    filename fn3 = filename("folder");
+    filename fn4;
 
     fn1 += testFN3;
     fn1_2 += fn3_s;

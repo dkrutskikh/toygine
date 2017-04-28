@@ -175,7 +175,7 @@ TEST_CASE("Point tests", "[PointTests]") {
     REQUIRE(p1 == testPoint1);
     REQUIRE(p2 == testPoint2);
 
-    REQUIRE_FALSE(testPoint1 == testPoint2);
-    REQUIRE_FALSE(p1 == p2);
+    REQUIRE(testPoint1 != testPoint2);
+    REQUIRE(p1 != p2);
   }
 }

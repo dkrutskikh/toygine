@@ -2,7 +2,7 @@
 # Stuff the average programmer needs to change #
 set(FRAMEWORK_LIST       ../../ext/catch/single_include/catch.hpp)
 
-set(CORETESTS            core/hashes.cpp)
+set(CORETESTS            core/hashes.cpp core/utils.cpp)
 set(FILESYSTEMTESTS      filesystem/filename.cpp)
 set(MATHEMATICSTESTS     mathematics/point.cpp mathematics/vector2d.cpp)
 set(APPLICATIONTESTS     )

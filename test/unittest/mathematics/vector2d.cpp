@@ -31,8 +31,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
   const vector2d testVector2(-12, 22);
 
   SECTION("toPoint") {
-    vector2d v1 = testVector1;
-    vector2d v2 = -v1;
+    auto v1 = testVector1;
+    auto v2 = -v1;
 
     const point testPoint1 = v1.toPoint();
     const point testPoint2 = v2.toPoint();
@@ -67,8 +67,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v2.y == Approx(9.5f));
   }
   SECTION("subAssign") {
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector2;
+    auto v1 = testVector1;
+    auto v2 = testVector2;
 
     REQUIRE((v1 - testVector2).x == Approx(23.5f));
     REQUIRE((v1 - testVector2).y == Approx(-34.5f));
@@ -84,8 +84,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v2.y == Approx(34.5f));
   }
   SECTION("mulAssign") {
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector2;
+    auto v1 = testVector1;
+    auto v2 = testVector2;
 
     REQUIRE((v1 * 5).x == Approx(57.5f));
     REQUIRE((v1 * 5).y == Approx(-62.5f));
@@ -119,8 +119,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v2.y == Approx(-11.0f));
   }
   SECTION("divAssign") {
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector2;
+    auto v1 = testVector1;
+    auto v2 = testVector2;
 
     REQUIRE((v1 / 2).x == Approx(5.75f));
     REQUIRE((v1 / 2).y == Approx(-6.25f));
@@ -143,15 +143,15 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(testVector2.sqrMagnitude() == Approx(628.0f));
   }
   SECTION("normalize") {
-    vector2d testVector = vector2d(0, 0);
+    auto testVector = vector2d(0, 0);
     testVector.normalize();
     REQUIRE(testVector.x == Approx(0.0f));
     REQUIRE(testVector.y == Approx(1.0f));
 
     REQUIRE(testVector.magnitude() == Approx(1.0f));
 
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector2;
+    auto v1 = testVector1;
+    auto v2 = testVector2;
 
     v1.normalize();
     v2.normalize();
@@ -163,8 +163,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v2.y == Approx(0.8779f));
   }
   SECTION("setZero") {
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector2;
+    auto v1 = testVector1;
+    auto v2 = testVector2;
 
     REQUIRE_FALSE(v1.x == Approx(0.0f));
     REQUIRE_FALSE(v1.y == Approx(0.0f));
@@ -181,13 +181,13 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
   }
   SECTION("rotate") {
     const vector2d v1(1.0f, 0.0f);
-    vector2d v2 = v1;
+    auto v2 = v1;
 
     const float angleStep = 0.1f;
     for (float angle = angleStep; angle < 2.0f * M_PI; angle += angleStep) {
       v2.rotate(angleStep);
 
-      vector2d v3 = v1;
+      auto v3 = v1;
       v3.rotate(angle);
 
       REQUIRE(v2.x == Approx(v3.x));
@@ -196,7 +196,7 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
   }
   SECTION("isZero") {
     static const float arr[] = {0.0f, 0.0f};
-    vector2d v1 = testVector1;
+    auto v1 = testVector1;
     vector2d v2(arr);
 
     REQUIRE(!v1.isZero());
@@ -207,8 +207,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v1.isZero());
   }
   SECTION("isEqual") {
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector1;
+    auto v1 = testVector1;
+    auto v2 = testVector1;
 
     REQUIRE(v1.isEqual(v2));
 
@@ -218,7 +218,7 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(v1.isEqual(v2, 3.0f));
   }
   SECTION("minus") {
-    vector2d v1 = -testVector1;
+    auto v1 = -testVector1;
 
     REQUIRE_FALSE(v1.x == Approx(testVector1.x));
     REQUIRE_FALSE(v1.y == Approx(testVector1.y));
@@ -227,20 +227,20 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
     REQUIRE(-v1.y == Approx(testVector1.y));
   }
   SECTION("equaling") {
-    vector2d v1 = testVector1;
-    vector2d v2 = testVector2;
+    auto v1 = testVector1;
+    auto v2 = testVector2;
 
     REQUIRE(v1 == testVector1);
     REQUIRE(v2 == testVector2);
 
-    REQUIRE_FALSE(testVector1 == testVector2);
-    REQUIRE_FALSE(v1 == v2);
+    REQUIRE(testVector1 != testVector2);
+    REQUIRE(v1 != v2);
   }
   SECTION("multiplication") {
     // Scalar multiply
     {
-      vector2d v1 = vector2d(0.0f, 1.0f);
-      vector2d v2 = vector2d(1.0f, 0.0f);
+      auto v1 = vector2d(0.0f, 1.0f);
+      auto v2 = vector2d(1.0f, 0.0f);
       REQUIRE(v1 * v2 == Approx(0.0f));
 
       v2 = vector2d(-1.0f, 0.0f);
@@ -255,8 +255,8 @@ TEST_CASE("Vector2d tests", "[Vector2dTests]") {
 
     // Vector multiply
     {
-      vector2d v1 = vector2d(0.0f, 1.0f);
-      vector2d v2 = vector2d(1.0f, 0.0f);
+      auto v1 = vector2d(0.0f, 1.0f);
+      auto v2 = vector2d(1.0f, 0.0f);
       REQUIRE(toygine::math::cross(v1, v2) == Approx(-1.0f));
 
       v2 = vector2d(-1.0f, 0.0f);

@@ -95,7 +95,7 @@ inline float vector2d::magnitude() const { return std::sqrt(sqrMagnitude()); }
 inline float vector2d::sqrMagnitude() const { return x * x + y * y; }
 
 inline void vector2d::normalize() {
-  const float len = magnitude();
+  const auto len = magnitude();
   if (len > std::numeric_limits<float>::epsilon()) {
     *this /= len;
   } else {

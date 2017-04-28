@@ -43,7 +43,7 @@ class vector2d {
   inline vector2d(float x, float y);
   inline vector2d(std::int32_t x, std::int32_t y);
   explicit inline vector2d(const point &pnt);
-  inline vector2d(const float *floatArray);
+  explicit inline vector2d(const float *floatArray);
 
   inline point toPoint() const;
 
