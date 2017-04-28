@@ -20,7 +20,7 @@
 // IN THE SOFTWARE.
 //
 #include "hashes.hpp"
-#include <cassert>
+#include <stdexcept>
 
 static const std::uint8_t sc_crcTable8bit[256] = {
     0x00, 0x31, 0x62, 0x53, 0xC4, 0xF5, 0xA6, 0x97, 0xB9, 0x88, 0xDB, 0xEA,
@@ -124,34 +124,44 @@ static const std::uint32_t sc_crcTable32bit[256] = {
 
 namespace toygine {
 
-std::uint8_t crc8(const byte *data, std::size_t size, std::uint8_t crc) {
-  assert(data != nullptr);
+std::uint8_t crc8(const byte *data, std::size_t size,
+                  std::uint8_t crc) noexcept {
+  if (data != nullptr && size > 0) {
+    crc = ~crc;
 
-  crc = ~crc;
+    while (size--) crc = sc_crcTable8bit[crc ^ *data++];
 
-  while (size--) crc = sc_crcTable8bit[crc ^ *data++];
+    crc = ~crc;
+  }
 
-  return ~crc;
+  return crc;
 }
 
-std::uint16_t crc16(const byte *data, std::size_t size, std::uint16_t crc) {
-  assert(data != nullptr);
+std::uint16_t crc16(const byte *data, std::size_t size,
+                    std::uint16_t crc) noexcept {
+  if (data != nullptr && size > 0) {
+    crc = ~crc;
 
-  crc = ~crc;
+    while (size--) crc = (crc << 8) ^ sc_crcTable16bit[(crc >> 8) ^ *data++];
 
-  while (size--) crc = (crc << 8) ^ sc_crcTable16bit[(crc >> 8) ^ *data++];
+    crc = ~crc;
+  }
 
-  return ~crc;
+  return crc;
 }
 
-std::uint32_t crc32(const byte *data, std::size_t size, std::uint32_t crc) {
-  assert(data != nullptr);
+std::uint32_t crc32(const byte *data, std::size_t size,
+                    std::uint32_t crc) noexcept {
+  if (data != nullptr && size > 0) {
+    crc = ~crc;
 
-  crc = ~crc;
+    while (size--)
+      crc = sc_crcTable32bit[(crc ^ (*data++)) & 0xff] ^ (crc >> 8);
 
-  while (size--) crc = sc_crcTable32bit[(crc ^ (*data++)) & 0xff] ^ (crc >> 8);
+    crc = ~crc;
+  }
 
-  return ~crc;
+  return crc;
 }
 
 }  // namespace toygine
