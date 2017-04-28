@@ -38,36 +38,36 @@ class point {
   std::int32_t x;
   std::int32_t y;
 
-  inline point();
-  inline point(std::int32_t x, std::int32_t y);
-  explicit inline point(const std::int32_t *intArray);
+  inline point() noexcept;
+  inline point(std::int32_t x, std::int32_t y) noexcept;
+  explicit inline point(const std::int32_t *intArray) noexcept;
 
-  inline point &operator+=(const point &pnt);
-  inline point &operator-=(const point &pnt);
-  inline point &operator*=(int scalar);
-  inline point &operator*=(float scalar);
-  inline point &operator/=(std::int32_t scalar);
+  inline point &operator+=(const point &pnt) noexcept;
+  inline point &operator-=(const point &pnt) noexcept;
+  inline point &operator*=(int scalar) noexcept;
+  inline point &operator*=(float scalar) noexcept;
+  inline point &operator/=(std::int32_t scalar) noexcept;
 
-  inline std::int32_t sqrMagnitude() const;
+  inline std::int32_t sqrMagnitude() const noexcept;
 
-  inline void setZero();
+  inline void setZero() noexcept;
 
-  inline bool isZero() const;
+  inline bool isZero() const noexcept;
   //! Checks if this point equals the other one.
-  inline bool isEqual(const point &pnt, int eps = 0) const;
+  inline bool isEqual(const point &pnt, int eps = 0) const noexcept;
 };
 
-inline point operator-(const point &pnt);
+inline point operator-(const point &pnt) noexcept;
 
-inline point operator+(const point &left, const point &right);
-inline point operator-(const point &left, const point &right);
-inline point operator*(const point &left, int right);
-inline point operator*(const point &left, float right);
-inline point operator*(int left, const point &right);
-inline point operator/(const point &left, int right);
+inline point operator+(const point &left, const point &right) noexcept;
+inline point operator-(const point &left, const point &right) noexcept;
+inline point operator*(const point &left, int right) noexcept;
+inline point operator*(const point &left, float right) noexcept;
+inline point operator*(int left, const point &right) noexcept;
+inline point operator/(const point &left, int right) noexcept;
 
-inline bool operator==(const point &left, const point &right);
-inline bool operator!=(const point &left, const point &right);
+inline bool operator==(const point &left, const point &right) noexcept;
+inline bool operator!=(const point &left, const point &right) noexcept;
 
 }  // namespace math
 }  // namespace toygine
