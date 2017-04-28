@@ -34,7 +34,7 @@
 namespace toygine {
 namespace math {
 
-inline vector2d::vector2d()
+inline vector2d::vector2d() noexcept
 #ifdef _DEBUG
     : x(std::nanf("")),
       y(std::nanf(""))
@@ -45,56 +45,58 @@ inline vector2d::vector2d()
 {
 }
 
-inline vector2d::vector2d(float _x, float _y) : x(_x), y(_y) {}
+inline vector2d::vector2d(float _x, float _y) noexcept : x(_x), y(_y) {}
 
-inline vector2d::vector2d(std::int32_t _x, std::int32_t _y)
+inline vector2d::vector2d(std::int32_t _x, std::int32_t _y) noexcept
     : x(static_cast<float>(_x)), y(static_cast<float>(_y)) {}
 
-inline vector2d::vector2d(const point &pnt)
+inline vector2d::vector2d(const point &pnt) noexcept
     : x(static_cast<float>(pnt.x)), y(static_cast<float>(pnt.y)) {}
 
-inline vector2d::vector2d(const float *floatArray)
+inline vector2d::vector2d(const float *floatArray) noexcept
     : x(floatArray[0]), y(floatArray[1]) {
   assert(floatArray != nullptr);
 }
 
-inline point vector2d::toPoint() const {
+inline point vector2d::toPoint() const noexcept {
   return point(static_cast<std::int32_t>(x), static_cast<std::int32_t>(y));
 }
 
-inline vector2d &vector2d::operator+=(const vector2d &v) {
+inline vector2d &vector2d::operator+=(const vector2d &v) noexcept {
   x += v.x;
   y += v.y;
 
   return *this;
 }
 
-inline vector2d &vector2d::operator-=(const vector2d &v) {
+inline vector2d &vector2d::operator-=(const vector2d &v) noexcept {
   x -= v.x;
   y -= v.y;
 
   return *this;
 }
 
-inline vector2d &vector2d::operator*=(float scalar) {
+inline vector2d &vector2d::operator*=(float scalar) noexcept {
   x *= scalar;
   y *= scalar;
 
   return *this;
 }
 
-inline vector2d &vector2d::operator/=(float scalar) {
+inline vector2d &vector2d::operator/=(float scalar) noexcept {
   assert(std::abs(scalar) > std::numeric_limits<float>::epsilon());
 
   *this *= (1.0f / scalar);
   return *this;
 }
 
-inline float vector2d::magnitude() const { return std::sqrt(sqrMagnitude()); }
+inline float vector2d::magnitude() const noexcept {
+  return std::sqrt(sqrMagnitude());
+}
 
-inline float vector2d::sqrMagnitude() const { return x * x + y * y; }
+inline float vector2d::sqrMagnitude() const noexcept { return x * x + y * y; }
 
-inline void vector2d::normalize() {
+inline void vector2d::normalize() noexcept {
   const auto len = magnitude();
   if (len > std::numeric_limits<float>::epsilon()) {
     *this /= len;
@@ -104,58 +106,60 @@ inline void vector2d::normalize() {
   }
 }
 
-inline void vector2d::setZero() { x = y = 0.0f; }
+inline void vector2d::setZero() noexcept { x = y = 0.0f; }
 
-inline bool vector2d::isZero() const {
+inline bool vector2d::isZero() const noexcept {
   return (std::abs(x) <= std::numeric_limits<float>::epsilon()) &&
          (std::abs(y) <= std::numeric_limits<float>::epsilon());
 }
 
-inline bool vector2d::isEqual(const vector2d &v, float eps) const {
+inline bool vector2d::isEqual(const vector2d &v, float eps) const noexcept {
   assert(eps >= 0.0f);
 
   return (std::abs(x - v.x) <= eps) && (std::abs(y - v.y) <= eps);
 }
 
-inline vector2d operator-(const vector2d &vec) {
+inline vector2d operator-(const vector2d &vec) noexcept {
   return vector2d(-vec.x, -vec.y);
 }
 
-inline vector2d operator+(const vector2d &left, const vector2d &right) {
+inline vector2d operator+(const vector2d &left,
+                          const vector2d &right) noexcept {
   return vector2d(left.x + right.x, left.y + right.y);
 }
 
-inline vector2d operator-(const vector2d &left, const vector2d &right) {
+inline vector2d operator-(const vector2d &left,
+                          const vector2d &right) noexcept {
   return vector2d(left.x - right.x, left.y - right.y);
 }
 
-inline vector2d operator*(const vector2d &left, float right) {
+inline vector2d operator*(const vector2d &left, float right) noexcept {
   return vector2d(left.x * right, left.y * right);
 }
 
-inline vector2d operator*(float left, const vector2d &right) {
+inline vector2d operator*(float left, const vector2d &right) noexcept {
   return (right * left);
 }
 
-inline vector2d operator/(const vector2d &left, float right) {
+inline vector2d operator/(const vector2d &left, float right) noexcept {
   assert(std::abs(right) > std::numeric_limits<float>::epsilon());
 
   return (left * (1.0f / right));
 }
 
-inline bool operator==(const vector2d &left, const vector2d &right) {
+inline bool operator==(const vector2d &left, const vector2d &right) noexcept {
   return left.isEqual(right);
 }
 
-inline bool operator!=(const vector2d &left, const vector2d &right) {
+inline bool operator!=(const vector2d &left, const vector2d &right) noexcept {
   return !(left == right);
 }
 
-inline float operator*(const vector2d &left, const vector2d &right) {
+inline float operator*(const vector2d &left, const vector2d &right) noexcept {
   return (left.x * right.x + left.y * right.y);
 }
 
-inline float cross(const vector2d &left, const vector2d &right) {
+inline float cross(const vector2d &left, const vector2d &right) noexcept {
   return (left.x * right.y - left.y * right.x);
 }
 

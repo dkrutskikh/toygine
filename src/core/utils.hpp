@@ -37,7 +37,7 @@ namespace toygine {
 
 static const std::size_t ucs2InUtf8MaxSize = 3;
 
-char *ucs2ToUtf8(char *dest, std::size_t destSize, wchar_t const *src);
+char *ucs2ToUtf8(char *dest, std::size_t destSize, wchar_t const *src) noexcept;
 
 }  // namespace toygine
 

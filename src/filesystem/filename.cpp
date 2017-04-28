@@ -25,7 +25,7 @@
 namespace toygine {
 namespace filesystem {
 
-void filename::fix() {
+void filename::fix() noexcept {
   for (std::size_t index = 0; index < _fileName.size(); ++index) {
     if (_fileName[index] == '\\') _fileName[index] = '/';
   }
@@ -35,7 +35,7 @@ void filename::fix() {
     _fileName.front() -= ('a' - 'A');
 }
 
-std::string filename::nameExt() const {
+std::string filename::nameExt() const noexcept {
   if (_fileName.empty()) return fullPath();
 
   auto index = _fileName.find_last_of('/');
@@ -44,7 +44,7 @@ std::string filename::nameExt() const {
   return fullPath().substr(index + 1);
 }
 
-std::string filename::name() const {
+std::string filename::name() const noexcept {
   auto nameExtSize = nameExt().length();
   if (nameExtSize == 0) return "";
 
@@ -55,7 +55,7 @@ std::string filename::name() const {
                           nameExtSize - extSize);
 }
 
-std::string filename::ext() const {
+std::string filename::ext() const noexcept {
   auto fileNameExt = nameExt();
   auto index = fileNameExt.find_last_of('.');
   if (index == std::string::npos) return "";
@@ -63,7 +63,7 @@ std::string filename::ext() const {
   return fileNameExt.substr(index + 1);
 }
 
-void filename::setExtension(char const *newExtension) {
+void filename::setExtension(char const *newExtension) noexcept {
   assert(newExtension != nullptr);
   if (nameExt().empty()) return;
 
@@ -77,7 +77,7 @@ void filename::setExtension(char const *newExtension) {
   _fileName += newExtension;
 }
 
-void filename::dirUp() {
+void filename::dirUp() noexcept {
   if (_fileName.size() < 2) return;
 
   _fileName.erase(_fileName.size() - nameExt().length());
@@ -85,7 +85,7 @@ void filename::dirUp() {
   if (prevSlash != std::string::npos) _fileName.erase(prevSlash + 1);
 }
 
-filename &filename::operator+=(const std::string &str) {
+filename &filename::operator+=(const std::string &str) noexcept {
   if (str.empty()) return *this;
 
   if (_fileName.empty()) {
@@ -107,7 +107,7 @@ filename &filename::operator+=(const std::string &str) {
   return *this;
 }
 
-void filename::optimize() {
+void filename::optimize() noexcept {
   // kill first "./"
   if (_fileName.size() > 1 && _fileName.front() == '.' && _fileName[1] == '/')
     _fileName.erase(0, 2);

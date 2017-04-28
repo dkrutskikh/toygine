@@ -24,7 +24,8 @@
 
 namespace toygine {
 
-char *ucs2ToUtf8(char *dest, std::size_t destSize, wchar_t const *src) {
+char *ucs2ToUtf8(char *dest, std::size_t destSize,
+                 wchar_t const *src) noexcept {
   if (dest == nullptr || destSize == 0) return nullptr;
 
   char *destPointer = dest;

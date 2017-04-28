@@ -34,56 +34,56 @@ namespace filesystem {
 
 class filename {
  public:
-  inline filename();
-  inline ~filename();
+  inline filename() noexcept;
+  inline ~filename() noexcept;
 
-  inline filename(filename &&instance);
-  inline filename(const filename &instance);
-  inline explicit filename(std::string &&fileName);
-  inline explicit filename(const std::string &fileName);
-  inline explicit filename(const char *fileName);
+  inline filename(filename &&instance) noexcept;
+  inline filename(const filename &instance) noexcept;
+  inline explicit filename(std::string &&fileName) noexcept;
+  inline explicit filename(const std::string &fileName) noexcept;
+  inline explicit filename(const char *fileName) noexcept;
 
-  inline bool empty() const;
+  inline bool empty() const noexcept;
 
-  inline const std::string &fullPath() const;
-  inline std::string path() const;
-  std::string nameExt() const;
-  std::string name() const;
-  std::string ext() const;
+  inline const std::string &fullPath() const noexcept;
+  inline std::string path() const noexcept;
+  std::string nameExt() const noexcept;
+  std::string name() const noexcept;
+  std::string ext() const noexcept;
 
-  inline void setExtension(const std::string &newExtension);
-  void setExtension(char const *newExtension);
+  inline void setExtension(const std::string &newExtension) noexcept;
+  void setExtension(char const *newExtension) noexcept;
 
-  inline filename &operator=(filename &&instance);
-  inline filename &operator=(const filename &instance);
-  inline filename &operator=(std::string &&str);
-  inline filename &operator=(const std::string &str);
-  inline filename &operator=(char const *s);
+  inline filename &operator=(filename &&instance) noexcept;
+  inline filename &operator=(const filename &instance) noexcept;
+  inline filename &operator=(std::string &&str) noexcept;
+  inline filename &operator=(const std::string &str) noexcept;
+  inline filename &operator=(char const *s) noexcept;
 
-  inline filename &operator+=(const filename &instance);
-  filename &operator+=(const std::string &str);
-  inline filename &operator+=(char const *s);
+  inline filename &operator+=(const filename &instance) noexcept;
+  filename &operator+=(const std::string &str) noexcept;
+  inline filename &operator+=(char const *s) noexcept;
 
-  void dirUp();
+  void dirUp() noexcept;
 
  private:
-  void fix();
-  void optimize();
+  void fix() noexcept;
+  void optimize() noexcept;
 
   std::string _fileName;
 };
 
-inline bool operator==(const filename &lhs, const filename &rhs);
-inline bool operator==(const filename &lhs, const std::string &rhs);
-inline bool operator==(const std::string &lhs, const filename &rhs);
-inline bool operator==(const filename &lhs, const char *rhs);
-inline bool operator==(const char *&lhs, const filename &rhs);
+inline bool operator==(const filename &lhs, const filename &rhs) noexcept;
+inline bool operator==(const filename &lhs, const std::string &rhs) noexcept;
+inline bool operator==(const std::string &lhs, const filename &rhs) noexcept;
+inline bool operator==(const filename &lhs, const char *rhs) noexcept;
+inline bool operator==(const char *&lhs, const filename &rhs) noexcept;
 
-inline bool operator!=(const filename &lhs, const filename &rhs);
-inline bool operator!=(const filename &lhs, const std::string &rhs);
-inline bool operator!=(const std::string &lhs, const filename &rhs);
-inline bool operator!=(const filename &lhs, const char *rhs);
-inline bool operator!=(const char *&lhs, const filename &rhs);
+inline bool operator!=(const filename &lhs, const filename &rhs) noexcept;
+inline bool operator!=(const filename &lhs, const std::string &rhs) noexcept;
+inline bool operator!=(const std::string &lhs, const filename &rhs) noexcept;
+inline bool operator!=(const filename &lhs, const char *rhs) noexcept;
+inline bool operator!=(const char *&lhs, const filename &rhs) noexcept;
 
 }  // namespace filesystem
 }  // namespace toygine

@@ -33,44 +33,44 @@
 namespace toygine {
 namespace math {
 
-inline point::point() : x(), y() {}
+inline point::point() noexcept : x(), y() {}
 
-inline point::point(std::int32_t _x, std::int32_t _y) : x(_x), y(_y) {}
+inline point::point(std::int32_t _x, std::int32_t _y) noexcept : x(_x), y(_y) {}
 
-inline point::point(const std::int32_t *intArray)
+inline point::point(const std::int32_t *intArray) noexcept
     : x(intArray[0]), y(intArray[1]) {
   assert(intArray != nullptr);
 }
 
-inline point &point::operator+=(const point &pnt) {
+inline point &point::operator+=(const point &pnt) noexcept {
   x += pnt.x;
   y += pnt.y;
 
   return *this;
 }
 
-inline point &point::operator-=(const point &pnt) {
+inline point &point::operator-=(const point &pnt) noexcept {
   x -= pnt.x;
   y -= pnt.y;
 
   return *this;
 }
 
-inline point &point::operator*=(int scalar) {
+inline point &point::operator*=(int scalar) noexcept {
   x *= scalar;
   y *= scalar;
 
   return *this;
 }
 
-inline point &point::operator*=(float scalar) {
+inline point &point::operator*=(float scalar) noexcept {
   x = static_cast<std::int32_t>(x * scalar);
   y = static_cast<std::int32_t>(y * scalar);
 
   return *this;
 }
 
-inline point &point::operator/=(std::int32_t scalar) {
+inline point &point::operator/=(std::int32_t scalar) noexcept {
   assert(scalar != 0);
 
   x /= scalar;
@@ -79,48 +79,54 @@ inline point &point::operator/=(std::int32_t scalar) {
   return *this;
 }
 
-inline std::int32_t point::sqrMagnitude() const { return x * x + y * y; }
+inline std::int32_t point::sqrMagnitude() const noexcept {
+  return x * x + y * y;
+}
 
-inline void point::setZero() { x = y = 0; }
+inline void point::setZero() noexcept { x = y = 0; }
 
-inline bool point::isZero() const { return (x == 0 && y == 0); }
+inline bool point::isZero() const noexcept { return (x == 0 && y == 0); }
 
-inline bool point::isEqual(const point &pnt, int eps) const {
+inline bool point::isEqual(const point &pnt, int eps) const noexcept {
   assert(eps >= 0);
   return (std::abs(x - pnt.x) <= eps) && (std::abs(y - pnt.y) <= eps);
 }
 
-inline point operator-(const point &pnt) { return point(-pnt.x, -pnt.y); }
+inline point operator-(const point &pnt) noexcept {
+  return point(-pnt.x, -pnt.y);
+}
 
-inline point operator+(const point &left, const point &right) {
+inline point operator+(const point &left, const point &right) noexcept {
   return point(left.x + right.x, left.y + right.y);
 }
 
-inline point operator-(const point &left, const point &right) {
+inline point operator-(const point &left, const point &right) noexcept {
   return point(left.x - right.x, left.y - right.y);
 }
 
-inline point operator*(const point &left, int right) {
+inline point operator*(const point &left, int right) noexcept {
   return point(left.x * right, left.y * right);
 }
 
-inline point operator*(const point &left, float right) {
+inline point operator*(const point &left, float right) noexcept {
   return point(static_cast<std::int32_t>(left.x * right),
                static_cast<std::int32_t>(left.y * right));
 }
 
-inline point operator*(int left, const point &right) { return (right * left); }
+inline point operator*(int left, const point &right) noexcept {
+  return (right * left);
+}
 
-inline point operator/(const point &left, int right) {
+inline point operator/(const point &left, int right) noexcept {
   assert(right != 0);
   return point(left.x / right, left.y / right);
 }
 
-inline bool operator==(const point &left, const point &right) {
+inline bool operator==(const point &left, const point &right) noexcept {
   return (left.x == right.x && left.y == right.y);
 }
 
-inline bool operator!=(const point &left, const point &right) {
+inline bool operator!=(const point &left, const point &right) noexcept {
   return !(left == right);
 }
 

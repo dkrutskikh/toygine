@@ -33,9 +33,12 @@
 
 namespace toygine {
 
-std::uint8_t crc8(const byte *data, std::size_t size, std::uint8_t crc = 0);
-std::uint16_t crc16(const byte *data, std::size_t size, std::uint16_t crc = 0);
-std::uint32_t crc32(const byte *data, std::size_t size, std::uint32_t crc = 0);
+std::uint8_t crc8(const byte *data, std::size_t size,
+                  std::uint8_t crc = 0) noexcept;
+std::uint16_t crc16(const byte *data, std::size_t size,
+                    std::uint16_t crc = 0) noexcept;
+std::uint32_t crc32(const byte *data, std::size_t size,
+                    std::uint32_t crc = 0) noexcept;
 
 }  // namespace toygine
 
