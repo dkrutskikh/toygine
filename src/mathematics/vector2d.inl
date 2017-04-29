@@ -45,10 +45,10 @@ inline vector2d::vector2d() noexcept
 {
 }
 
-inline vector2d::vector2d(float _x, float _y) noexcept : x(_x), y(_y) {}
+inline vector2d::vector2d(float vx, float vy) noexcept : x(vx), y(vy) {}
 
-inline vector2d::vector2d(std::int32_t _x, std::int32_t _y) noexcept
-    : x(static_cast<float>(_x)), y(static_cast<float>(_y)) {}
+inline vector2d::vector2d(std::int32_t vx, std::int32_t vy) noexcept
+    : x(static_cast<float>(vx)), y(static_cast<float>(vy)) {}
 
 inline vector2d::vector2d(const point &pnt) noexcept
     : x(static_cast<float>(pnt.x)), y(static_cast<float>(pnt.y)) {}

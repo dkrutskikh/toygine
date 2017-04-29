@@ -39,7 +39,7 @@ class point {
   std::int32_t y;
 
   inline point() noexcept;
-  inline point(std::int32_t x, std::int32_t y) noexcept;
+  inline point(std::int32_t px, std::int32_t py) noexcept;
   explicit inline point(const std::int32_t *intArray) noexcept;
 
   inline point &operator+=(const point &pnt) noexcept;

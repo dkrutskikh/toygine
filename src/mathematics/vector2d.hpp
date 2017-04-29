@@ -40,8 +40,8 @@ class vector2d {
   float y;
 
   inline vector2d() noexcept;
-  inline vector2d(float x, float y) noexcept;
-  inline vector2d(std::int32_t x, std::int32_t y) noexcept;
+  inline vector2d(float vx, float vy) noexcept;
+  inline vector2d(std::int32_t vx, std::int32_t vy) noexcept;
   explicit inline vector2d(const point &pnt) noexcept;
   explicit inline vector2d(const float *floatArray) noexcept;
 

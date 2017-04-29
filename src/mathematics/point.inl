@@ -35,7 +35,7 @@ namespace math {
 
 inline point::point() noexcept : x(), y() {}
 
-inline point::point(std::int32_t _x, std::int32_t _y) noexcept : x(_x), y(_y) {}
+inline point::point(std::int32_t px, std::int32_t py) noexcept : x(px), y(py) {}
 
 inline point::point(const std::int32_t *intArray) noexcept
     : x(intArray[0]), y(intArray[1]) {
