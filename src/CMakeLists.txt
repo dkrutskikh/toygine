@@ -14,8 +14,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/core/core.hpp.in ${CMAKE_CURRENT_SOUR
 
 #
 # Stuff the average programmer needs to change #
-set(SRC_CORE_LIST core/hashes.cpp core/utils.cpp)
-set(HDR_CORE_LIST core/hashes.hpp core/utils.hpp ../include/core.hpp)
+set(SRC_CORE_LIST core/hashes.cpp core/logger.cpp core/utils.cpp)
+set(HDR_CORE_LIST core/hashes.hpp core/logger.hpp core/utils.hpp ../include/core.hpp)
+set(INL_CORE_LIST                 core/logger.inl)
 
 set(SRC_FILESYSTEM_LIST filesystem/filename.cpp)
 set(HDR_FILESYSTEM_LIST filesystem/filename.hpp)
@@ -25,13 +26,13 @@ set(SRC_MATHEMATICS_LIST                       mathematics/vector2d.cpp)
 set(HDR_MATHEMATICS_LIST mathematics/point.hpp mathematics/vector2d.hpp)
 set(INL_MATHEMATICS_LIST mathematics/point.inl mathematics/vector2d.inl)
 
-source_group("Core" FILES ${SRC_CORE_LIST} ${HDR_CORE_LIST})
+source_group("Core" FILES ${SRC_CORE_LIST} ${HDR_CORE_LIST} ${INL_CORE_LIST})
 source_group("FileSystem" FILES ${SRC_FILESYSTEM_LIST} ${HDR_FILESYSTEM_LIST} ${INL_FILESYSTEM_LIST})
 source_group("Mathematics" FILES ${SRC_MATHEMATICS_LIST} ${HDR_MATHEMATICS_LIST} ${INL_MATHEMATICS_LIST})
 
 set(SRC_LIST ${SRC_LIST} ${SRC_CORE_LIST} ${SRC_FILESYSTEM_LIST} ${SRC_MATHEMATICS_LIST})
 set(HDR_LIST ${HDR_LIST} ${HDR_CORE_LIST} ${HDR_FILESYSTEM_LIST} ${HDR_MATHEMATICS_LIST})
-set(INL_LIST ${INL_LIST}                  ${INL_FILESYSTEM_LIST} ${INL_MATHEMATICS_LIST})
+set(INL_LIST ${INL_LIST} ${INL_CORE_LIST} ${INL_FILESYSTEM_LIST} ${INL_MATHEMATICS_LIST})
 set(LIB_LIST ${LIB_LIST})
 
 #
