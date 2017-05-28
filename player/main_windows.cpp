@@ -23,7 +23,6 @@
 #include "app.hpp"
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
-
   toygine::app player;
   player.setVersion(TG_APP_VERSION_MAJOR, TG_APP_VERSION_MINOR,
                     TG_APP_VERSION_PATCH);

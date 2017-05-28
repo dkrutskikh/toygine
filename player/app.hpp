@@ -41,7 +41,7 @@ struct semversion {
 };
 
 class app {
-public:
+ public:
   app();
   ~app();
 
@@ -60,14 +60,14 @@ public:
   bool run();
   inline bool exitStatus() const;
 
-private:
+ private:
   semversion _version;
 
   bool _exitStatus;
 };
 
-} // namespace toygine
+}  // namespace toygine
 
 #include "app.inl"
 
-#endif // PLAYER_APP_HPP_
+#endif  // PLAYER_APP_HPP_

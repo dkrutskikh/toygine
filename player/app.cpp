@@ -40,28 +40,21 @@ void app::setVersion(std::uint32_t major, std::uint32_t minor,
 
 app *app::instance() { return s_instance; }
 
-bool app::initialize() {
-  return true;
-}
+bool app::initialize() { return true; }
 
-bool app::process() {
-  return false;
-}
+bool app::process() { return false; }
 
-void app::shutdown() {
-}
+void app::shutdown() {}
 
 bool app::run() {
   using namespace std::chrono_literals;
 
-  if (!initialize())
-    return false;
+  if (!initialize()) return false;
 
-  while (process())
-    std::this_thread::sleep_for(1ms);
+  while (process()) std::this_thread::sleep_for(1ms);
 
   shutdown();
   return true;
 }
 
-} // namespace toygine
+}  // namespace toygine
