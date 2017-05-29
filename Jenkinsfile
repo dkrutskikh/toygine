@@ -4,8 +4,6 @@ node('osx') {
   sh 'git submodule update --init --recursive'
 
   stage 'prepare'
-  sh "sed -i '' 's/ -fobjc-arc / /g' build/cmake/BuildSettings.cmake"
-  sh "sed -i '' 's/#set(PREPROCESSOR_DEFINITIONS /set(PREPROCESSOR_DEFINITIONS /g' build/cmake/BuildSettings.cmake"
   sh "./cmake_osx_xcode_project.sh"
 
   stage 'build'
