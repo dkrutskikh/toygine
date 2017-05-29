@@ -24,8 +24,7 @@
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
   toygine::app player;
-  player.setVersion(TG_APP_VERSION_MAJOR, TG_APP_VERSION_MINOR,
-                    TG_APP_VERSION_PATCH);
+  player.setVersion(TG_VERSION_MAJOR, TG_VERSION_MINOR, TG_VERSION_PATCH);
   player.run();
 
   return player.exitStatus() ? EXIT_SUCCESS : EXIT_FAILURE;
