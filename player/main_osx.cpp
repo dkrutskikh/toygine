@@ -20,41 +20,11 @@
 // IN THE SOFTWARE.
 //
 #include "app.hpp"
-#include <chrono>
-#include <thread>
 
-namespace toygine {
+int osxStartPoint();
 
-static app *s_instance = nullptr;
-
-app::app() : _version(), _exitStatus(true) { s_instance = this; }
-
-app::~app() { s_instance = nullptr; }
-
-void app::setVersion(std::uint32_t major, std::uint32_t minor,
-                     std::uint32_t patch) {
-  _version.major = major;
-  _version.minor = minor;
-  _version.patch = patch;
+int main(int, char **, char **) {
+  toygine::app player;
+  player.setVersion(TG_VERSION_MAJOR, TG_VERSION_MINOR, TG_VERSION_PATCH);
+  return osxStartPoint();
 }
-
-app *app::instance() { return s_instance; }
-
-bool app::initialize() { return true; }
-
-bool app::process() { return false; }
-
-void app::shutdown() {}
-
-bool app::run() {
-  using namespace std::chrono_literals;
-
-  if (!initialize()) return false;
-
-  while (process()) std::this_thread::sleep_for(1ms);
-
-  shutdown();
-  return true;
-}
-
-}  // namespace toygine

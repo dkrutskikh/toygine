@@ -31,6 +31,6 @@ inline const semversion &app::version() const { return _version; }
 
 inline bool app::exitStatus() const { return _exitStatus; }
 
-} // namespace toygine
+}  // namespace toygine
 
-#endif // PLAYER_APP_INL_
+#endif  // PLAYER_APP_INL_
